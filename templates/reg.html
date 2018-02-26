@@ -1,0 +1,93 @@
+{% load static %}﻿
+
+<!doctype html>
+<html>
+
+<head>
+	<link type="text/css" rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+	<link type="text/css" rel="stylesheet" href="{% static 'css/style.css' %}">
+    <meta charset="utf-8">
+    <title>Регистрация</title>
+</head>
+
+<body>
+    <section>
+        <div class="col-md-2 col-sm-3 padding-top-10 relative">
+
+            <div>
+            Все поля обязательны.
+
+            </div>
+
+            <div style="padding-top: 15px">
+                <h4>Логин</h4>
+                <p>- 150 cимволов или меньше</p>
+                <p>- только буквы, цифры и @/./+/-/_</p>
+            </div>
+
+            <div style="padding-top: 15px">
+                <h4>Пароль</h4>
+                <p>- отличен от другой информации</p>
+                <p>- минимум 8 символов</p>
+                <p>- необычный (123, qwerty...)</p>
+                <p>- содержит и цифры, и буквы</p>
+            </div>
+            <div style="margin-top: 10px">
+                Пароль и его подтверждение должны совпадать.
+
+            </div>
+
+        </div>
+
+        <div class="col-md-7 col-sm-6 middle-col-white text-center">
+
+
+			<h3 class="text-uppercase padding-top-10" style="margin-right: -70px; margin-bottom: -60px">Регистрация</h3>
+
+
+            <form action="" method="post" style="padding: 200px;" class=" form-horizontal help control-label"> {% csrf_token %}
+                {% if error %}
+                    <h6 style="margin-right: -70px; color: #9f0000">{{ error }}</h6>
+                {% endif %}
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Логин</label>
+                    <div class="col-sm-10">
+                        <input type="text"  class="form-control" name = '{{ newuser_form.username.name }}' placeholder="Введите логин">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Пароль</label>
+                    <div class="col-sm-10">
+                        <input type="password"  class="form-control" name = '{{ newuser_form.password1.name }}' placeholder="Введите пароль">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label"> </label>
+                    <div class="col-sm-10">
+                        <input type="password"  class="form-control" name = '{{ newuser_form.password2.name }}' placeholder="Подтвердите пароль">
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="custom-file-upload">Зарегестрироваться</button>
+                        <div>
+                            <p style="font-size: 11.5px; margin-top: -28px;"><a class="text-uppercase" href="/login">Войти</a></p>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-3 col-sm-3 padding-top-10">
+        </div>
+    </section>
+
+
+    <script type="text/javascript" src="js/bootstrap.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+</body>
+
+</html>

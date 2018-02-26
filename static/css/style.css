@@ -1,0 +1,193 @@
+@charset "utf-8";
+/* CSS Document */
+
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,500,700');
+
+body {
+    background-color: #f2f2f2;
+    font-family: Roboto;
+}
+p {
+    padding: 0;
+    margin: 0;
+}
+.padding-top-10 {
+    padding-top: 10px;
+}
+
+.middle-col-white {
+    background-color: #fff;
+}
+
+.bottom {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+.list-group {
+    font-weight: 300;
+}
+
+.custom-file-upload {
+    background: grey; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(#f9f9f9, #dedede); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#f9f9f9, #dedede); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#f9f9f9, #dedede); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#f9f9f9, #dedede); /* Standard syntax */
+    cursor: pointer;
+    padding: 10px 15px 10px 15px;
+    border: 1px solid #d7d7d7;
+    border-radius: 3px;
+    color: #323232;
+    margin-top: 20px;
+    font-weight: 500;
+    transition: 0.5s;
+    margin-bottom: 50px;
+    width: 170px;
+}
+.custom-file-upload:hover {
+    background: -webkit-linear-gradient(#dedede, #f9f9f9); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#dedede, #f9f9f9); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#dedede, #f9f9f9); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#dedede, #f9f9f9); /* Standard syntax */
+    width: 190px;
+}
+.transition {
+    transition: 0.5s;
+    width: 50px;
+}
+.errors {
+    margin: 0 auto;
+    width: 80%;
+    background-color: #efefef;
+}
+.hover:hover {
+    transition: 0.5s;
+    background-color: #ebebeb;
+}
+.hover:hover > .green {
+    background-color: #238900;
+    width: 100px;
+}
+.hover:hover > .yellow {
+    background-color: #c8a000;
+    width: 100px;
+}
+.hover:hover > .red {
+    background-color: #9f0000;
+    width: 100px;
+}
+.badge {
+    padding: 3px 7px 3px 7px;
+    font-size: 15px;
+    font-weight: 500;
+}
+.grey-error {
+    background-color: #f2f2f2;
+    height: 40px;
+    line-height: 40px;
+}
+.grey-error a,
+.white-error a {
+    color: #404040;
+    text-decoration: none;
+    font-weight: 300;
+    font-size: 16px;
+}
+.grey-error a:hover,
+.white-error a:hover {
+    color: #7e2e2e;
+    font-weight: 500;
+}
+.white-error {
+    background-color: #fff;
+    height: 40px;
+    line-height: 40px;
+}
+.text-300 {
+    font-weight: 300;
+    font-size: 16px;
+}
+
+iframe {
+    width: 90%;
+    height: 400px;
+    border: none;
+    box-shadow: 0px 0px 20px #ccc;
+    margin-bottom: 50px;
+}
+.window {
+    margin: 0 auto;
+    width: 90%;
+    height: 400px;
+    border: none;
+    box-shadow: 0px 0px 20px #ccc;
+    margin-bottom: 50px;
+    background-color: #fff;
+}
+.window p {
+    padding: 10px;
+}
+
+.help {
+    height: 100vh;
+}
+
+.grey-task {
+    background-color: #f2f2f2;
+    height: 40px;
+    line-height: 40px;
+}
+.grey-task a,
+.white-task a {
+    color: #404040;
+    text-decoration: none;
+    font-weight: 300;
+    font-size: 16px;
+}
+.grey-task a:hover,
+.white-task a:hover {
+    font-weight: 500;
+}
+.white-task {
+    background-color: #fff;
+    height: 40px;
+    line-height: 40px;
+}
+
+.person {
+    padding-bottom: 5px;
+    font-size: 18px;
+}
+
+.settings {
+    position: absolute;
+    text-align: left;
+}
+
+.task {
+    margin-top: 30px;
+    width: 300px;
+    text-align: center;
+}
+
+.checkboxTask {
+    padding-top: 23px;
+    text-align: center;
+    font-size: 13px;
+}
+
+.group {
+    width: 300px;
+    text-align: center;
+}
+
+.margin-bot-45 {
+    margin-bottom: 45px;
+}
+

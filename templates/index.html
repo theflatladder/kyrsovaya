@@ -1,0 +1,97 @@
+{% load static %}﻿
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Translate Proxy</title>
+    <meta charset="UTF-8">
+
+	<link type="text/css" rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+	<link type="text/css" rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+    <div class="col-md-10 col-sm-9 padding-top-10 relative">
+    <div class="container-fluid">
+        <div id="wrapper">
+            <div class="row justify-content-center" id="url_wrapper">
+                <div class="col col-lg-6 col-md-6 col-sm-12 col-12">
+                    <input type="url" name="url" id="url_input" onkeydown="if (event.keyCode == 13) { setProxyFrame() }" autofocus>
+                </div>
+                <div class="col col-lg-3 col-md-2 col-sm-2 col-2">
+                    <select id="sel_from">
+                        <option value="">Detect language</option>
+                    </select>
+                    ->
+                    <select id="sel_to">
+                    </select>
+                </div>
+                <div class="col col-lg-1 col-md-12 col-sm-12 col-12">
+                    <button type="button" onclick="setProxyFrame()">Translate</button>
+                </div>
+            </div>
+            <div class="row" id="proxy_wrapper_row">
+                <div class="col col-lg-12 col-md-12 col-sm-12 col-12" id="proxy_wrapper_col">
+                    <iframe id="proxy" class="content-frame content-frame_target" name="targetFrame" src="about:blank" sandbox="allow-scripts"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        window.onload = function() {
+            let sel_from = document.getElementById('sel_from');
+            let sel_to   = document.getElementById('sel_to');
+
+            let langs = {'af': 'Afrikaans', 'am': 'Amharic', 'ar': 'Arabic', 'az': 'Azerbaijani', 'ba': 'Bashkir', 'be': 'Belarusian', 'bg': 'Bulgarian', 'bn': 'Bengali', 'bs': 'Bosnian', 'ca': 'Catalan', 'ceb': 'Cebuano', 'cs': 'Czech', 'cy': 'Welsh', 'da': 'Danish', 'de': 'German', 'el': 'Greek', 'emj': 'Emoji', 'en': 'English', 'eo': 'Esperanto', 'es': 'Spanish', 'et': 'Estonian', 'eu': 'Basque', 'fa': 'Persian', 'fi': 'Finnish', 'fr': 'French', 'ga': 'Irish', 'gd': 'Scottish Gaelic', 'gl': 'Galician', 'gu': 'Gujarati', 'he': 'Hebrew', 'hi': 'Hindi', 'hr': 'Croatian', 'ht': 'Haitian', 'hu': 'Hungarian', 'hy': 'Armenian', 'id': 'Indonesian', 'is': 'Icelandic', 'it': 'Italian', 'ja': 'Japanese', 'jv': 'Javanese', 'ka': 'Georgian', 'kk': 'Kazakh', 'km': 'Khmer', 'kn': 'Kannada', 'ko': 'Korean', 'ky': 'Kyrgyz', 'la': 'Latin', 'lb': 'Luxembourgish', 'lo': 'Lao', 'lt': 'Lithuanian', 'lv': 'Latvian', 'mg': 'Malagasy', 'mhr': 'Mari', 'mi': 'Maori', 'mk': 'Macedonian', 'ml': 'Malayalam', 'mn': 'Mongolian', 'mr': 'Marathi', 'mrj': 'Hill Mari', 'ms': 'Malay', 'mt': 'Maltese', 'my': 'Burmese', 'ne': 'Nepali', 'nl': 'Dutch', 'no': 'Norwegian', 'pa': 'Punjabi', 'pap': 'Papiamento', 'pl': 'Polish', 'pt': 'Portuguese', 'ro': 'Romanian', 'ru': 'Russian', 'si': 'Sinhalese', 'sk': 'Slovak', 'sl': 'Slovenian', 'sq': 'Albanian', 'sr': 'Serbian', 'su': 'Sundanese', 'sv': 'Swedish', 'sw': 'Swahili', 'ta': 'Tamil', 'te': 'Telugu', 'tg': 'Tajik', 'th': 'Thai', 'tl': 'Tagalog', 'tr': 'Turkish', 'tt': 'Tatar', 'udm': 'Udmurt', 'uk': 'Ukrainian', 'ur': 'Urdu', 'uz': 'Uzbek', 'vi': 'Vietnamese', 'xh': 'Xhosa', 'yi': 'Yiddish', 'zh': 'Chinese'}
+
+            Object.entries(langs).forEach(([ code, country ]) => {
+                [sel_from, sel_to].map(sel => {
+                    let opt = document.createElement('option');
+
+                    opt.value = code;
+                    opt.innerHTML = country;
+                    sel.appendChild(opt);
+                });
+            });
+        }
+
+        function setProxyFrame() {
+            input = document.getElementById('url_input');
+
+            if (input.value) {
+                document.getElementById('wrapper').style.display = 'block';
+                document.getElementById('proxy_wrapper_row').style.display = 'block';
+
+                let proxy = document.getElementById('proxy');
+
+                let from = document.getElementById('sel_from');
+                let to   = document.getElementById('sel_to');
+
+                let lang = from.value ? `${from.value}-${to.value}` : to.value;
+
+                proxy.src = `/proxy?url=${input.value}&lang=${lang}`;
+                proxy.contentWindow.location.reload();
+            }
+            else {
+                alert('Please, fill out the URL field.');
+            }
+        }
+    </script>
+
+		</div>
+
+		<div class="col-md-2 col-sm-3 padding-top-10 relative">
+            <form class="padding-top-10 text-right" action="" method="post"> {% csrf_token %}
+            {% if username %}
+                <a class="custom-file-upload" href="/logout">Выйти ({{ username }})</a>
+            {% else %}
+                <a class="custom-file-upload" href="/login">Войти</a>
+            {% endif %}
+            </form>
+
+		</div>
+
+
+</body>
+</html>

@@ -1,0 +1,55 @@
+
+html{
+    height: 100%;
+}
+
+body {
+    position:absolute; top:0; bottom:0; right:0; left:0;
+    margin: 0px !important;
+}
+
+select {
+    width: 120px;
+}
+
+.container-fluid {
+    height: 100%;
+    padding: 0px !important;
+}
+
+.row {
+    margin: 0px !important;
+}
+
+#wrapper {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 15px;
+}
+
+#url_wrapper {
+    width: 100%;
+}
+
+#url_input {
+    width: 100%;
+}
+
+#proxy_wrapper_row {
+    display: none;
+    margin-top: 15px !important;
+    height: 90%;
+    width: 100%;
+}
+
+#proxy_wrapper_col {
+    height: 100%;
+    width: 100%;
+}
+
+#proxy {
+    height: 100%;
+    width: 100%;
+}
